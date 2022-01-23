@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { Switch } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
+import Register from "./Register";
 import PopupAddCard from "./PopupAddCard";
 import PopupEditProfile from "./PopupEditProfile";
 import PopupEditAvatar from "./PopupEditAvatar";
@@ -121,6 +122,9 @@ const App = () => {
               onLikeCard={handleLikeCard}
               cards={cards}
             />
+            <Route path="/sign-up">
+              <Register onRegister={() => console.log("Register")} />
+            </Route>
           </Switch>
           <Footer />
         </div>
