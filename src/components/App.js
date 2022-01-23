@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Switch } from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute";
 import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
@@ -98,20 +100,28 @@ const App = () => {
     setSelectedCard({ name: "", link: "" });
   };
 
+  const loggedIn = true;
+
   return (
     <div className="body">
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
           <Header />
-          <Main
-            onCardClick={handleCardClick}
-            onEditAvatar={handleEditAvatarClick}
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onDeleteCard={handleDeleteCard}
-            onLikeCard={handleLikeCard}
-            cards={cards}
-          />
+          <Switch>
+            <ProtectedRoute
+              exact
+              path="/"
+              component={Main}
+              loggedIn={loggedIn}
+              onCardClick={handleCardClick}
+              onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onDeleteCard={handleDeleteCard}
+              onLikeCard={handleLikeCard}
+              cards={cards}
+            />
+          </Switch>
           <Footer />
         </div>
         <PopupAddCard
