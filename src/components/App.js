@@ -5,6 +5,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 import Main from "./Main";
 import Register from "./Register";
+import Login from "./Login";
 import PopupAddCard from "./PopupAddCard";
 import PopupEditProfile from "./PopupEditProfile";
 import PopupEditAvatar from "./PopupEditAvatar";
@@ -122,6 +123,9 @@ const App = () => {
               onLikeCard={handleLikeCard}
               cards={cards}
             />
+            <Route path="/sign-in">
+              <Login onLogin={() => console.log("Login")} />
+            </Route>
             <Route path="/sign-up">
               <Register onRegister={() => console.log("Register")} />
             </Route>
