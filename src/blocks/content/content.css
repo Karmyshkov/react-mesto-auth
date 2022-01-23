@@ -1,0 +1,11 @@
+.content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+
+@media screen and (max-width: 504px) {
+  .content {
+    margin: 0 19px;
+  }
+}

@@ -1,0 +1,19 @@
+.footer__copyright {
+  margin: 0;
+  max-width: 318px;
+  font-size: 18px;
+  color: var(--color-grey);
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.footer__copyright::before {
+  content: "\00A9";
+  margin-right: 7px;
+}
+
+@media screen and (max-width: 680px) {
+  .footer__copyright {
+    font-size: 14px;
+  }
+}

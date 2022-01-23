@@ -1,0 +1,13 @@
+.card__btn_type_delete {
+  display: none;
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 20px;
+  background-image: url(../../../../images/delete.svg);
+}
+
+.card__btn_type_delete:hover {
+  opacity: 0.6;
+}

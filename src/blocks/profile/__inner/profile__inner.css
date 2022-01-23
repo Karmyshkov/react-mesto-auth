@@ -1,0 +1,27 @@
+.profile__inner {
+  margin-left: 30px;
+}
+
+@media profile__inner and (max-width: 760px) {
+  .profile__avatar {
+    margin-left: 0;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .profile__inner {
+    max-width: 380px;
+  }
+}
+
+@media screen and (max-width: 428px) {
+  .profile__inner {
+    max-width: 320px;
+  }
+}
+
+@media screen and (max-width: 368px) {
+  .profile__inner {
+    max-width: 270px;
+  }
+}

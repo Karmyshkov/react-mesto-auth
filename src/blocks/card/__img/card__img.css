@@ -1,0 +1,56 @@
+.card__img {
+  cursor: pointer;
+  -o-object-fit: cover;
+  object-fit: cover;
+  width: 282px;
+  height: 282px;
+}
+
+@media screen and (max-width: 950px) {
+  .card__img {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .card__img {
+    height: 210px;
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .card__img {
+    width: 100%;
+    height: 364px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .card__img {
+    height: 280px;
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .card__img {
+    height: 230px;
+  }
+}
+
+@media screen and (max-width: 504px) {
+  .card__img {
+    height: 400px;
+  }
+}
+
+@media screen and (max-width: 426px) {
+  .card__img {
+    height: 320px;
+  }
+}
+
+@media screen and (max-width: 370px) {
+  .card__img {
+    height: 282px;
+  }
+}
