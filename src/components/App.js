@@ -25,6 +25,7 @@ const App = () => {
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
   const [loggedIn, setLoggedIn] = useState(false);
   const [status, setStatus] = useState(null);
+  const [userEmail, setUserEmail] = useState(null);
 
   const history = useHistory();
 
@@ -100,19 +101,6 @@ const App = () => {
     setSelectedCard({ name: "", link: "" });
   };
 
-  const handleLogin = (dataUser) => {
-    login(dataUser)
-      .then((dataUser) => {
-        setLoggedIn(true);
-        localStorage.setItem("jwt", dataUser.token);
-        history.push("/");
-      })
-      .catch((dataUser) => {
-        setOpenTooltip(true);
-        setStatus(dataUser.status);
-      });
-  };
-
   const handleRegister = (dataUser) => {
     register(dataUser).then((dataUser) => {
       if (dataUser.status !== 200) {
@@ -122,6 +110,20 @@ const App = () => {
         history.push("/sign-in");
       }
     });
+  };
+
+  const handleLogin = (dataUser) => {
+    login(dataUser)
+      .then((resDataUser) => {
+        setLoggedIn(true);
+        localStorage.setItem("jwt", resDataUser.token);
+        history.push("/");
+        setUserEmail(dataUser.email);
+      })
+      .catch((resDataUser) => {
+        setOpenTooltip(true);
+        setStatus(resDataUser.status);
+      });
   };
 
   const checkToken = () => {
@@ -142,6 +144,7 @@ const App = () => {
     if (localStorage.getItem("jwt")) {
       localStorage.removeItem("jwt");
       history.push("/sign-in");
+      setLoggedIn(false);
     }
   };
 
@@ -162,7 +165,7 @@ const App = () => {
     <div className="body">
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
-          <Header onLogout={handleLogout} />
+          <Header onLogout={handleLogout} userEmail={userEmail} />
           <Switch>
             <ProtectedRoute
               exact

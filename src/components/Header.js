@@ -2,7 +2,7 @@ import React from "react";
 import logo from "../images/logo.svg";
 import { useLocation, Link } from "react-router-dom";
 
-const Header = ({ onLogout }) => {
+const Header = ({ onLogout, userEmail }) => {
   const location = useLocation();
   const textBtn =
     location.pathname === "/sign-in"
@@ -25,9 +25,12 @@ const Header = ({ onLogout }) => {
           alt="Логотип веб-сайта Место"
         />
       </a>
-      <Link to={pathBtn} onClick={onLogout} className="header__btn">
-        {textBtn}
-      </Link>
+      <div className="header__inner">
+        {location.pathname === "/" && <p>{userEmail}</p>}
+        <Link to={pathBtn} onClick={onLogout} className="header__btn">
+          {textBtn}
+        </Link>
+      </div>
     </header>
   );
 };
