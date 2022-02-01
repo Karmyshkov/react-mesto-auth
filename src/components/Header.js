@@ -26,7 +26,9 @@ const Header = ({ onLogout, userEmail }) => {
         />
       </a>
       <div className="header__inner">
-        {location.pathname === "/" && <p>{userEmail}</p>}
+        {location.pathname === "/" && (
+          <p className="header__email">{userEmail}</p>
+        )}
         <Link to={pathBtn} onClick={onLogout} className="header__btn">
           {textBtn}
         </Link>
