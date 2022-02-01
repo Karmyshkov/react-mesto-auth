@@ -10,6 +10,7 @@ import PopupAddCard from "./PopupAddCard";
 import PopupEditProfile from "./PopupEditProfile";
 import PopupEditAvatar from "./PopupEditAvatar";
 import ImagePopup from "./ImagePopup";
+import Tooltip from "./Tooltip";
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { login, register, isValidToken } from "../utils/auth";
@@ -20,8 +21,10 @@ const App = () => {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
+  const [isOpenTooltip, setOpenTooltip] = useState(false);
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
   const [loggedIn, setLoggedIn] = useState(false);
+  const [status, setStatus] = useState(null);
 
   const history = useHistory();
 
@@ -99,9 +102,14 @@ const App = () => {
 
   const handleLogin = (dataUser) => {
     login(dataUser).then((dataUser) => {
-      setLoggedIn(true);
-      history.push("/");
-      localStorage.setItem("jwt", dataUser.token);
+      if (dataUser.status !== 200) {
+        setOpenTooltip(true);
+        setStatus(dataUser.status);
+      } else {
+        setLoggedIn(true);
+        history.push("/");
+        localStorage.setItem("jwt", dataUser.token);
+      }
     });
   };
 
@@ -162,6 +170,11 @@ const App = () => {
           onUpdateAvatar={handleUpdateAvatar}
         />
         <ImagePopup onClose={closeAllPopups} card={selectedCard} />
+        <Tooltip
+          status={status}
+          isOpen={isOpenTooltip}
+          onClose={setOpenTooltip}
+        />
       </CurrentUserContext.Provider>
     </div>
   );
