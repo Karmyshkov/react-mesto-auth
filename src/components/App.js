@@ -101,20 +101,27 @@ const App = () => {
   };
 
   const handleLogin = (dataUser) => {
-    login(dataUser).then((dataUser) => {
+    login(dataUser)
+      .then((dataUser) => {
+        setLoggedIn(true);
+        history.push("/");
+        localStorage.setItem("jwt", dataUser.token);
+      })
+      .catch((dataUser) => {
+        setOpenTooltip(true);
+        setStatus(dataUser.status);
+      });
+  };
+
+  const handleRegister = (dataUser) => {
+    register(dataUser).then((dataUser) => {
       if (dataUser.status !== 200) {
         setOpenTooltip(true);
         setStatus(dataUser.status);
       } else {
-        setLoggedIn(true);
-        history.push("/");
-        localStorage.setItem("jwt", dataUser.token);
+        history.push("/sign-in");
       }
     });
-  };
-
-  const handleRegister = (dataUser) => {
-    register(dataUser).then(() => history.push("/sign-in"));
   };
 
   useEffect(() => {

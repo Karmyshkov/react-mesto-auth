@@ -3,6 +3,7 @@ import successIcon from "../images/success.svg";
 import errorIcon from "../images/error.svg";
 
 const Tooltip = ({ status, isOpen, onClose }) => {
+  console.log(status);
   return (
     <div className={`popup popup_type_more ${isOpen && "popup_opened"}`}>
       <div className="popup__inner">
@@ -14,8 +15,8 @@ const Tooltip = ({ status, isOpen, onClose }) => {
         ></button>
         <img
           className="popup__img"
-          src={status === 200 ? successIcon : errorIcon}
-          alt={`${status === 200 ? "Успех" : "Ошибка"}`}
+          src={status === 201 ? successIcon : errorIcon}
+          alt={`${status === 201 ? "Успех" : "Ошибка"}`}
         />
       </div>
     </div>
