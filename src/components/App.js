@@ -102,7 +102,7 @@ const App = () => {
     setSelectedCard({ name: "", link: "" });
   };
 
-  const loggedIn = true;
+  const loggedIn = false;
 
   return (
     <div className="body">
@@ -130,7 +130,7 @@ const App = () => {
               <Register onRegister={() => console.log("Register")} />
             </Route>
           </Switch>
-          <Footer />
+          {loggedIn && <Footer />}
         </div>
         <PopupAddCard
           isOpen={isAddPlacePopupOpen}
