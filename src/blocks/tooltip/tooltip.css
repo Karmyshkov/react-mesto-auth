@@ -1,0 +1,24 @@
+.tooltip {
+  position: relative;
+  background-color: var(--color-bg-secondary);
+  min-width: 430px;
+  text-align: center;
+  padding: 60px 0;
+  border-radius: 10px;
+}
+
+.tooltip__img {
+  max-width: 120px;
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.tooltip__title {
+  margin: 0;
+  max-width: 358px;
+  font-size: 24px;
+  color: var(--color-text-dark);
+  font-weight: 900;
+  line-height: 29px;
+  margin: 0 auto;
+}

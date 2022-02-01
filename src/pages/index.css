@@ -90,3 +90,7 @@
 @import url(../blocks/popup/__text/popup__text.css);
 
 /* / popup */
+
+/* tooltip */
+
+@import url(../blocks//tooltip/tooltip.css);
