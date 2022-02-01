@@ -3,3 +3,9 @@
   width: 100%;
   margin-bottom: 32px;
 }
+
+@media screen and (max-width: 504px) {
+  .tooltip__img {
+    margin-bottom: 40px;
+  }
+}

@@ -1,8 +1,16 @@
 .tooltip {
   position: relative;
   background-color: var(--color-bg-secondary);
-  min-width: 430px;
+  max-width: 430px;
+  width: 100%;
   text-align: center;
   padding: 60px 0;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 504px) {
+  .tooltip {
+    margin: 0 20px;
+    padding: 50px 0;
+  }
 }
