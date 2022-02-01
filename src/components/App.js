@@ -130,13 +130,12 @@ const App = () => {
     const token = localStorage.getItem("jwt");
     if (token) {
       isValidToken(token)
-        .then(() => {
+        .then(({ data }) => {
+          setUserEmail(data.email);
           setLoggedIn(true);
           history.push("/");
         })
-        .catch((err) => {
-          console.log(err);
-        });
+        .catch((err) => console.log(err));
     }
   };
 
