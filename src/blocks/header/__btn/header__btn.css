@@ -1,7 +1,5 @@
 .header__btn {
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
+  text-decoration: none;
   font-size: 18px;
   color: var(--color-text);
   font-weight: 400;
