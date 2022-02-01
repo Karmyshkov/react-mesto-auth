@@ -28,5 +28,4 @@ export const login = ({ password, email }) =>
     body: JSON.stringify({ password, email }),
   })
     .then((data) => checkStatus(data))
-    .then((dataUser) => localStorage.setItem("jwt", dataUser.token))
     .catch((err) => console.log(err));

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useHistory } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Header from "./Header";
 import Footer from "./Footer";
@@ -21,6 +21,9 @@ const App = () => {
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  const history = useHistory();
 
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -104,14 +107,16 @@ const App = () => {
   };
 
   const handleLogin = (dataUser) => {
-    login(dataUser);
+    login(dataUser).then((dataUser) => {
+      setLoggedIn(true);
+      history.push("/");
+      localStorage.setItem("jwt", dataUser.token);
+    });
   };
 
   const handleRegister = (dataUser) => {
-    register(dataUser);
+    register(dataUser).then(() => history.push("/sign-in"));
   };
-
-  const loggedIn = false;
 
   return (
     <div className="body">
