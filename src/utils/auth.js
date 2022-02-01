@@ -29,3 +29,15 @@ export const login = ({ password, email }) =>
   })
     .then((data) => checkStatus(data))
     .catch((err) => console.log(err));
+
+export const isValidToken = (token) => {
+  return fetch(`${BASE_URL}/user/me`, {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  })
+    .then((data) => checkStatus(data))
+    .catch((err) => console.log(err));
+};

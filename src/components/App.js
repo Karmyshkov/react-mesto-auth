@@ -12,7 +12,7 @@ import PopupEditAvatar from "./PopupEditAvatar";
 import ImagePopup from "./ImagePopup";
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../context/CurrentUserContext";
-import { login, register } from "../utils/auth";
+import { login, register, isValidToken } from "../utils/auth";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -24,15 +24,6 @@ const App = () => {
   const [loggedIn, setLoggedIn] = useState(false);
 
   const history = useHistory();
-
-  useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([user, cards]) => {
-        setCurrentUser(user);
-        setCards(cards);
-      })
-      .catch((err) => console.log(err));
-  }, []);
 
   const handleCardClick = (obj) => {
     setSelectedCard(obj);
@@ -117,6 +108,15 @@ const App = () => {
   const handleRegister = (dataUser) => {
     register(dataUser).then(() => history.push("/sign-in"));
   };
+
+  useEffect(() => {
+    Promise.all([api.getUserInfo(), api.getInitialCards()])
+      .then(([user, cards]) => {
+        setCurrentUser(user);
+        setCards(cards);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div className="body">
