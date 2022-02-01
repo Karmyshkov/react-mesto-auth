@@ -23,9 +23,9 @@ const App = () => {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isOpenTooltip, setOpenTooltip] = useState(false);
   const [selectedCard, setSelectedCard] = useState({ name: "", link: "" });
-  const [loggedIn, setLoggedIn] = useState(false);
   const [status, setStatus] = useState(null);
   const [userEmail, setUserEmail] = useState(null);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const history = useHistory();
 

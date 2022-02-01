@@ -1,0 +1,6 @@
+.header__btn_open {
+  background-image: url(../../../../images/close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(45deg);
+}

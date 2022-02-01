@@ -1,5 +1,24 @@
 .header__btn {
-  cursor: pointer;
+  margin-right: 30px;
   background-color: transparent;
+  cursor: pointer;
   border: none;
+  display: none;
+  width: 24px;
+  height: 18px;
+  padding: 0;
+  background-image: url(../../../images/burger.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: 0.3s;
+}
+
+.header__btn:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 504px) {
+  .header__btn {
+    display: inline-block;
+  }
 }

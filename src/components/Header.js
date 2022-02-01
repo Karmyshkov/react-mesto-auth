@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import logo from "../images/logo.svg";
-import burger from "../images/burger.svg";
-import closeBtn from "../images/plus.svg";
 
 const Header = ({ onLogout, userEmail }) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   const location = useLocation();
   const textBtn =
     location.pathname === "/sign-in"
@@ -27,22 +31,6 @@ const Header = ({ onLogout, userEmail }) => {
           alt="Логотип веб-сайта Место"
         />
       </a>
-      <button
-        className="header__btn"
-        src={burger}
-        aria-label="Кнопка бургер"
-        type="button"
-      >
-        <img src={burger} alt="Иконка бургера" />
-      </button>
-      <button
-        className="header__btn"
-        src={closeBtn}
-        aria-label="Кнопка закрытия бургера"
-        type="button"
-      >
-        <img src={closeBtn} alt="Иконка закрытия бургера" />
-      </button>
       <div className="header__inner">
         {location.pathname === "/" && (
           <p className="header__email">{userEmail}</p>
@@ -51,6 +39,10 @@ const Header = ({ onLogout, userEmail }) => {
           {textBtn}
         </Link>
       </div>
+      <button
+        onClick={handleOpenMenu}
+        className={`header__btn ${isMenuOpen && "header__btn_open"}`}
+      />
     </header>
   );
 };
