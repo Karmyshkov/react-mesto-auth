@@ -7,7 +7,7 @@ export const register = ({ password, email }) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ password, email }),
-  }).then((dataUser) => dataUser);
+  }).then((dataUser) => dataUser.json());
 
 export const login = ({ password, email }) =>
   fetch(`${BASE_URL}/signin`, {
@@ -16,7 +16,7 @@ export const login = ({ password, email }) =>
       "Content-Type": "application/json",
     },
     body: JSON.stringify({ password, email }),
-  }).then((dataUser) => dataUser);
+  }).then((dataUser) => dataUser.json());
 
 export const isValidToken = (token) => {
   return fetch(`${BASE_URL}/user/me`, {
@@ -25,5 +25,5 @@ export const isValidToken = (token) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
-  }).then((dataUser) => dataUser);
+  }).then((dataUser) => dataUser.json());
 };

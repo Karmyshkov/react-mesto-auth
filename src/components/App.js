@@ -103,10 +103,9 @@ const App = () => {
   const handleLogin = (dataUser) => {
     login(dataUser)
       .then((dataUser) => {
-        console.log(dataUser.status);
         setLoggedIn(true);
-        history.push("/");
         localStorage.setItem("jwt", dataUser.token);
+        history.push("/");
       })
       .catch((dataUser) => {
         setOpenTooltip(true);
@@ -125,6 +124,20 @@ const App = () => {
     });
   };
 
+  const checkToken = () => {
+    const token = localStorage.getItem("jwt");
+    if (token) {
+      isValidToken(token)
+        .then(() => {
+          setLoggedIn(true);
+          history.push("/");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  };
+
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([user, cards]) => {
@@ -133,6 +146,10 @@ const App = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  useEffect(() => {
+    checkToken();
+  });
 
   return (
     <div className="body">
