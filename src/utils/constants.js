@@ -1,1 +1,1 @@
-export const BASE_URL = "https://auth.nomoreparties.co/signup";
+export const BASE_URL = "https://auth.nomoreparties.co";
