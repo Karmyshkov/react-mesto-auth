@@ -10,7 +10,7 @@ import PopupAddCard from "./PopupAddCard";
 import PopupEditProfile from "./PopupEditProfile";
 import PopupEditAvatar from "./PopupEditAvatar";
 import ImagePopup from "./ImagePopup";
-import Tooltip from "./Tooltip";
+import InfoTooltip from "./InfoTooltip";
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import { login, register, isValidToken } from "../utils/auth";
@@ -103,6 +103,7 @@ const App = () => {
   const handleLogin = (dataUser) => {
     login(dataUser)
       .then((dataUser) => {
+        console.log(dataUser.status);
         setLoggedIn(true);
         history.push("/");
         localStorage.setItem("jwt", dataUser.token);
@@ -177,7 +178,7 @@ const App = () => {
           onUpdateAvatar={handleUpdateAvatar}
         />
         <ImagePopup onClose={closeAllPopups} card={selectedCard} />
-        <Tooltip
+        <InfoTooltip
           status={status}
           isOpen={isOpenTooltip}
           onClose={setOpenTooltip}

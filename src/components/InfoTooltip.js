@@ -2,8 +2,7 @@ import React from "react";
 import successIcon from "../images/success.svg";
 import errorIcon from "../images/error.svg";
 
-const Tooltip = ({ status, isOpen, onClose }) => {
-  console.log(status);
+const InfoTooltip = ({ status, isOpen, onClose }) => {
   return (
     <div className={`popup popup_type_more ${isOpen && "popup_opened"}`}>
       <div className="tooltip">
@@ -28,4 +27,4 @@ const Tooltip = ({ status, isOpen, onClose }) => {
   );
 };
 
-export default Tooltip;
+export default InfoTooltip;
