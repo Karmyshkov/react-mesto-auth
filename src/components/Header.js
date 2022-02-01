@@ -1,7 +1,7 @@
 import React from "react";
 import logo from "../images/logo.svg";
 
-const Header = () => {
+const Header = ({ onLogout }) => {
   return (
     <header className="header page__header">
       <a href="/">
@@ -11,6 +11,9 @@ const Header = () => {
           alt="Логотип веб-сайта Место"
         />
       </a>
+      <button onClick={onLogout} type="button">
+        Выйти
+      </button>
     </header>
   );
 };

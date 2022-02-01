@@ -138,6 +138,13 @@ const App = () => {
     }
   };
 
+  const handleLogout = () => {
+    if (localStorage.getItem("jwt")) {
+      localStorage.removeItem("jwt");
+      history.push("/sign-in");
+    }
+  };
+
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([user, cards]) => {
@@ -155,7 +162,7 @@ const App = () => {
     <div className="body">
       <CurrentUserContext.Provider value={currentUser}>
         <div className="page">
-          <Header />
+          <Header onLogout={handleLogout} />
           <Switch>
             <ProtectedRoute
               exact
