@@ -1,0 +1,9 @@
+.header__btn {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 18px;
+  color: var(--color-btn-logout);
+  font-weight: 400;
+  line-height: 22px;
+}

@@ -11,7 +11,7 @@ const Header = ({ onLogout }) => {
           alt="Логотип веб-сайта Место"
         />
       </a>
-      <button onClick={onLogout} type="button">
+      <button onClick={onLogout} className="header__btn" type="button">
         Выйти
       </button>
     </header>
