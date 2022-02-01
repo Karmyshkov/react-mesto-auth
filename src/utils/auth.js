@@ -1,5 +1,7 @@
+import { BASE_URL } from "./constants";
+
 export const register = ({ password, email }) =>
-  fetch("https://auth.nomoreparties.co/signup", {
+  fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -10,7 +12,7 @@ export const register = ({ password, email }) =>
   });
 
 export const login = ({ password, email }) =>
-  fetch("https://auth.nomoreparties.co/signin", {
+  fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
