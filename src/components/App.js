@@ -102,14 +102,16 @@ const App = () => {
   };
 
   const handleRegister = (dataUser) => {
-    register(dataUser).then((dataUser) => {
-      if (dataUser.status !== 200) {
-        setOpenTooltip(true);
-        setStatus(dataUser.status);
-      } else {
+    register(dataUser)
+      .then(() => {
         history.push("/sign-in");
-      }
-    });
+        setOpenTooltip(true);
+        setStatus(201);
+      })
+      .catch((resDataUser) => {
+        setOpenTooltip(true);
+        setStatus(resDataUser.status);
+      });
   };
 
   const handleLogin = (dataUser) => {
