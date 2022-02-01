@@ -83,6 +83,19 @@ class Api {
       },
     }).then((dataCard) => this._checkStatus(dataCard));
   }
+
+  loginUser({ password, email }) {
+    return fetch("https://auth.nomoreparties.co", {
+      method: "POST",
+      headers: {
+        authorization: this.headers.authorization,
+      },
+      body: JSON.stringify({
+        password,
+        email,
+      }),
+    }).then((dataUser) => this._checkStatus(dataUser));
+  }
 }
 
 export const api = new Api({
