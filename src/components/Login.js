@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { api } from "../utils/Api";
+import { login } from "../utils/auth";
 
 const Login = () => {
   const [dataForm, setDataForm] = useState({ password: "", email: "" });
@@ -10,13 +10,13 @@ const Login = () => {
 
   const handleLogin = (evt) => {
     evt.preventDefault();
-    api.loginUser(dataForm).then((token) => console.log(token));
+    login(dataForm);
   };
 
   return (
     <>
       <h2 className="login__title">Вход</h2>
-      <form className="login" onSubmit={handleLogin}>
+      <form onSubmit={handleLogin} className="login">
         <input
           onChange={getData}
           className="login__input"
