@@ -1,22 +1,15 @@
 import React, { useState } from "react";
-import { login } from "../utils/auth";
 
-const Login = () => {
+const Login = ({ onLogin }) => {
   const [dataForm, setDataForm] = useState({ password: "", email: "" });
 
   const getData = (evt) => {
     setDataForm({ ...dataForm, [evt.target.name]: evt.target.value });
   };
-
-  const handleLogin = (evt) => {
-    evt.preventDefault();
-    login(dataForm);
-  };
-
   return (
     <>
       <h2 className="login__title">Вход</h2>
-      <form onSubmit={handleLogin} className="login">
+      <form onSubmit={(evt) => evt.preventDefault()} className="login">
         <input
           onChange={getData}
           className="login__input"
@@ -29,7 +22,11 @@ const Login = () => {
           placeholder="Пароль"
           name="password"
         />
-        <button className="login__btn" type="submit">
+        <button
+          onClick={() => onLogin(dataForm)}
+          className="login__btn"
+          type="submit"
+        >
           Войти
         </button>
       </form>

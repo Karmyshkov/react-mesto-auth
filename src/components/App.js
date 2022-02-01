@@ -12,6 +12,7 @@ import PopupEditAvatar from "./PopupEditAvatar";
 import ImagePopup from "./ImagePopup";
 import { api } from "../utils/Api";
 import { CurrentUserContext } from "../context/CurrentUserContext";
+import { login, register } from "../utils/auth";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState({});
@@ -102,6 +103,14 @@ const App = () => {
     setSelectedCard({ name: "", link: "" });
   };
 
+  const handleLogin = (dataUser) => {
+    login(dataUser);
+  };
+
+  const handleRegister = (dataUser) => {
+    register(dataUser);
+  };
+
   const loggedIn = false;
 
   return (
@@ -124,10 +133,10 @@ const App = () => {
               cards={cards}
             />
             <Route path="/sign-in">
-              <Login onLogin={() => console.log("Login")} />
+              <Login onLogin={handleLogin} />
             </Route>
             <Route path="/sign-up">
-              <Register onRegister={() => console.log("Register")} />
+              <Register onRegister={handleRegister} />
             </Route>
           </Switch>
           {loggedIn && <Footer />}
