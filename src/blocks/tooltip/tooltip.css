@@ -1,4 +1,5 @@
 .tooltip {
+  font-family: var(--ff);
   position: relative;
   background-color: var(--color-bg-secondary);
   max-width: 430px;
