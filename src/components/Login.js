@@ -9,7 +9,13 @@ const Login = ({ onLogin }) => {
   return (
     <>
       <h2 className="login__title">Вход</h2>
-      <form onSubmit={(evt) => evt.preventDefault()} className="login">
+      <form
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          onLogin(dataForm);
+        }}
+        className="login"
+      >
         <input
           value={dataForm.email}
           onChange={getData}
@@ -24,11 +30,7 @@ const Login = ({ onLogin }) => {
           placeholder="Пароль"
           name="password"
         />
-        <button
-          onClick={() => onLogin(dataForm)}
-          className="login__btn"
-          type="submit"
-        >
+        <button className="login__btn" type="submit">
           Войти
         </button>
       </form>
