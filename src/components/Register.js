@@ -10,24 +10,28 @@ const Register = ({ onRegister }) => {
   return (
     <>
       <h2 className="login__title">Регистрация</h2>
-      <form onSubmit={(evt) => evt.preventDefault()} className="login">
+      <form
+        onSubmit={(evt) => {
+          evt.preventDefault();
+          onRegister(dataForm);
+        }}
+        className="login"
+      >
         <input
+          value={dataForm.email}
           onChange={getData}
           className="login__input"
           placeholder="Email"
           name="email"
         />
         <input
+          value={dataForm.password}
           onChange={getData}
           className="login__input"
           placeholder="Пароль"
           name="password"
         />
-        <button
-          onClick={() => onRegister(dataForm)}
-          className="login__btn"
-          type="submit"
-        >
+        <button className="login__btn" type="submit">
           Зарегистрироваться
         </button>
         <Link className="login__link" to="/sign-in">
