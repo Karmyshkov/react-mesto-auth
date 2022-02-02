@@ -30,6 +30,7 @@ const Register = ({ onRegister }) => {
           className="login__input"
           placeholder="Пароль"
           name="password"
+          type="password"
         />
         <button className="login__btn" type="submit">
           Зарегистрироваться
