@@ -24,14 +24,14 @@ const Header = ({ onLogout, userEmail }) => {
       : "/sign-in";
   return (
     <header className="header page__header">
-      <a href="/">
+      <a className="header__link" href="/">
         <img
           className="header__logo"
           src={logo}
           alt="Логотип веб-сайта Место"
         />
       </a>
-      <div className="header__inner">
+      <div className={`header__inner ${isMenuOpen && "header__inner_open"}`}>
         {location.pathname === "/" && (
           <p className="header__email">{userEmail}</p>
         )}

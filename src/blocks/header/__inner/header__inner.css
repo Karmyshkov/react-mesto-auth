@@ -5,6 +5,9 @@
 
 @media screen and (max-width: 504px) {
   .header__inner {
-    margin-right: 30px;
+    display: none;
+    text-align: center;
+    order: 0;
+    grid-column: 1/-1;
   }
 }

@@ -17,6 +17,8 @@
 @import url(../blocks/header/__email/header__email.css);
 @import url(../blocks/header/__btn/header__btn.css);
 @import url(../blocks/header/__btn/_open/header__btn_open.css);
+@import url(../blocks/header/__inner/_open/header__inner_open);
+@import url(../blocks/header/__link/header__link.css);
 
 /* / header */
 

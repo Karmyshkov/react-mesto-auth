@@ -1,0 +1,5 @@
+@media screen and (max-width: 504px) {
+  .header__link {
+    order: 1;
+  }
+}
