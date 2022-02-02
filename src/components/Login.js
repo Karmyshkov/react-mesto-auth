@@ -11,12 +11,14 @@ const Login = ({ onLogin }) => {
       <h2 className="login__title">Вход</h2>
       <form onSubmit={(evt) => evt.preventDefault()} className="login">
         <input
+          value={dataForm.email}
           onChange={getData}
           className="login__input"
           placeholder="Email"
           name="email"
         />
         <input
+          value={dataForm.password}
           onChange={getData}
           className="login__input"
           placeholder="Пароль"
