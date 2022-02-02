@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Header from "./Header";
@@ -128,7 +128,7 @@ const App = () => {
       });
   };
 
-  const checkToken = () => {
+  const checkToken = useCallback(() => {
     const token = localStorage.getItem("jwt");
     if (token) {
       isValidToken(token)
@@ -139,7 +139,7 @@ const App = () => {
         })
         .catch((err) => console.log(err));
     }
-  };
+  }, [history]);
 
   const handleLogout = () => {
     if (localStorage.getItem("jwt")) {
@@ -160,7 +160,7 @@ const App = () => {
 
   useEffect(() => {
     checkToken();
-  });
+  }, [checkToken]);
 
   return (
     <div className="body">
