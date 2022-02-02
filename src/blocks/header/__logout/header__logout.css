@@ -14,6 +14,5 @@
 @media screen and (max-width: 504px) {
   .header__logout {
     display: block;
-    margin-bottom: 40px;
   }
 }
