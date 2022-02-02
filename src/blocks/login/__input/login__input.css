@@ -19,7 +19,6 @@
 
 @media screen and (max-width: 504px) {
   .login__input {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin: 0 30px 30px;
   }
 }
